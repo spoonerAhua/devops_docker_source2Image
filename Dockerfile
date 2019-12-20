@@ -8,4 +8,4 @@ RUN yum install wget -y &&\
     tar -xf node-v12.13.1-linux-x64.tar
 CMD ["/root/node-v12.13.1-linux-x64/bin/node","/root/server.js"]
 
-
+EXPOSE 8080

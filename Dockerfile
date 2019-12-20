@@ -1,7 +1,7 @@
 #base:https://hub.docker.com/_/centos
 FROM centos:centos7.7.1908
 WORKDIR /root
-COPY server.js .
+COPY . .
 RUN yum install wget -y &&\
     wget https://nodejs.org/dist/v12.13.1/node-v12.13.1-linux-x64.tar.xz &&\
     xz -d node-v12.13.1-linux-x64.tar.xz &&\

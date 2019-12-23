@@ -3,13 +3,13 @@ General docker image from source from github
 
 #USAGE
 
-source2image sourceType gitRespority
+source2image sourceType imageName gitRespority
 
 sourceType: nodejs or php
 
 Example:
 
-  source2image nodejs https://github.com/spoonerAhua/devops_docker_source2Image_example_nodejs.git
+  source2image.bat nodejs devops_docker_s2i:v0.1 https://github.com/spoonerAhua/devops_docker_source2Image_example_nodejs.git
 
 Windows 10
 

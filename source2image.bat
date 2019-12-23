@@ -1,6 +1,8 @@
 echo off
 
-set srcLink=%2
+set srcLink=%3
+set imageName=%2
+
 if "%srcLink%"=="" goto printHelp
 
 set languageType=%1
@@ -22,11 +24,11 @@ goto clear
 :buildNodejs
 echo "-->build nodejs"
 copy dockerfilesFromGit\Dockerfile_nodejs srcFromGit\Dockerfile
-docker build -t devops_docker_s2i_nodejs:v0.1 srcFromGit
+docker build -t %imageName% srcFromGit
 goto clear 　
 
 :clear
-echo docker build -t devops_docker_d2i:v0.1 srcFromGit
+echo docker build -t %imageName% srcFromGit
 rd /s/q srcFromGit
 rd /s/q dockerfilesFromGit
 goto exit

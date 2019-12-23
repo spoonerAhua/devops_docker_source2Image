@@ -7,7 +7,7 @@ set languageType=%1
 rd /s/q srcFromGit
 rd /s/q dockerfilesFromGit
 git clone https://github.com/spoonerAhua/devops_docker_source2Image.git dockerfilesFromGit
-git clone srcLink srcFromGit
+git clone %srcLink% srcFromGit
 
 if "%languageType%"=="php"    goto buildPHP
 if "%languageType%"=="nodejs" goto buildNodejs
@@ -21,7 +21,7 @@ goto clear
 
 :buildNodejs
 echo "-->build nodejs"
-copy dockerfilesFromGit/Dockerfile_nodejs srcFromGit/Dockerfile
+copy dockerfilesFromGit\Dockerfile_nodejs srcFromGit\Dockerfile
 docker build -t devops_docker_s2i_nodejs:v0.1 srcFromGit
 goto clear 　
 

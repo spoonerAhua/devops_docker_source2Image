@@ -1,5 +1,4 @@
-General docker image from source from github
-
+General docker image from source int github
 
 #USAGE
 
@@ -9,17 +8,17 @@ sourceType: nodejs or php
 
 Example:
 
-  source2image.bat nodejs devops_docker_s2i:v0.1 https://github.com/spoonerAhua/devops_docker_source2Image_example_nodejs.git
+  source2image nodejs nodejs_s2i:v0.1 https://github.com/spoonerAhua/devops_docker_source2Image_example_nodejs.git
 
 Windows 10
 
-  download source2image.bat from https://raw.githubusercontent.com/spoonerAhua/devops_docker_source2Image/master/source2image.bat
+  git clone https://github.com/spoonerAhua/devops_docker_source2Image.git
 
   then run source2image.bat with two parameters.
 
 Linux:
 
-  download source2image.sh from https://raw.githubusercontent.com/spoonerAhua/devops_docker_source2Image/master/source2image.sh
+  git clone https://github.com/spoonerAhua/devops_docker_source2Image.git
 
   then run source2image.sh with two parameters.
 

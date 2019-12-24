@@ -2,10 +2,12 @@
 FROM centos:centos7.7.1908
 WORKDIR /root
 COPY . .
-RUN yum install wget -y &&\
-    wget https://nodejs.org/dist/v12.13.1/node-v12.13.1-linux-x64.tar.xz &&\
+#in  china: https://cdn.npm.taobao.org/dist/node/v12.13.1/node-v12.13.1-linux-x64.tar.xz
+#out china: https://nodejs.org/dist/v12.13.1/node-v12.13.1-linux-x64.tar.xz
+RUN curl -o node-v12.13.1-linux-x64.tar.xz https://cdn.npm.taobao.org/dist/node/v12.13.1/node-v12.13.1-linux-x64.tar.xz &&\
     xz -d node-v12.13.1-linux-x64.tar.xz &&\
-    tar -xf node-v12.13.1-linux-x64.tar
+    tar -xf node-v12.13.1-linux-x64.tar &&\
+    rm -f node-v12.13.1-linux-x64.tar.xz
 CMD ["/root/node-v12.13.1-linux-x64/bin/node","/root/server.js"]
 
 EXPOSE 8080

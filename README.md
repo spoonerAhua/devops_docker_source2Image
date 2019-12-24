@@ -8,8 +8,12 @@ sourceType: nodejs or php
 
 Example:
 
-  source2image nodejs nodejs_s2i:v0.1 https://github.com/spoonerAhua/devops_docker_source2Image_example_nodejs.git
+  source2image nodejs devops_docker_s2i:v0.1 https://github.com/spoonerAhua/devops_docker_source2Image_example_nodejs.git
 
+  docker run -itd -p 8080:8080 --name nodejs devops_docker_s2i:v0.1
+  
+  then browse http://localhost:8080/ or curl http://localhost:8080/
+  
 Windows 10
 
   git clone https://github.com/spoonerAhua/devops_docker_source2Image.git

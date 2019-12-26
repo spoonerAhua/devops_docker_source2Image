@@ -36,7 +36,5 @@ elif [ $languageType = "nodejs" ]; then
   goto clear
 fi
 
-echo docker build -t %imageName% srcFromGi
-
 cleanEnv
 

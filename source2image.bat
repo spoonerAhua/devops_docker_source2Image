@@ -1,4 +1,4 @@
-echo off
+@echo off
 
 set srcLink=%3
 set imageName=%2
@@ -6,37 +6,45 @@ set imageName=%2
 if "%srcLink%"=="" goto printHelp
 
 set languageType=%1
-rd /s/q srcFromGit
-rd /s/q dockerfilesFromGit
+
+if exist srcFromGit (
+  rd /s/q srcFromGit 
+) 
+
+if exist dockerfilesFromGit (
+  rd /s/q dockerfilesFromGit
+) 
+
 git clone https://github.com/spoonerAhua/devops_docker_source2Image.git dockerfilesFromGit
 git clone %srcLink% srcFromGit
 
-if "%languageType%"=="php"    goto buildPHP
-if "%languageType%"=="nodejs" goto buildNodejs
+if "%languageType%"=="php" (
+  echo "-->build php"  
+  goto clear 
+)
 
-goto printHelp
-
-:buildPHP
-echo "-->build php"
-
-goto clear
-
-:buildNodejs
-echo "-->build nodejs"
-copy dockerfilesFromGit\Dockerfile_nodejs srcFromGit\Dockerfile
-docker build -t %imageName% srcFromGit
-goto clear 　
-
-:clear
-echo docker build -t %imageName% srcFromGit
-rd /s/q srcFromGit
-rd /s/q dockerfilesFromGit
-goto exit
+if "%languageType%"=="nodejs" (
+  echo "-->build nodejs"
+  copy dockerfilesFromGit\Dockerfile_nodejs srcFromGit\Dockerfile
+  docker build -t %imageName% srcFromGit
+  goto clear 
+)
 
 :printHelp
-echo The programe need two parameters. language type and git link
-echo language type: php or nodejs
+echo The programe need three parameters. 
+echo   language type: php or nodejs
+echo   image name
+echo   git link
 echo Example:
-echo   source2image.bat nodejs https://github.com/spoonerAhua/devops_docker_dockerfile2Image_nodejs.git
+echo   source2image nodejs devops_docker_s2i:v0.1 https://github.com/spoonerAhua/devops_docker_source2Image_example_nodejs.git
+
+:clear
+if exist srcFromGit (
+  rd /s/q srcFromGit 
+) 
+
+if exist dockerfilesFromGit (
+  rd /s/q dockerfilesFromGit
+) 
 
 :exit
